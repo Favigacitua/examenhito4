@@ -1,0 +1,16 @@
+.reseñas {
+    display: flex !important;
+    flex-wrap: wrap !important;   
+    justify-content: space-evenly !important;  
+    align-items: flex-start; 
+    gap: 1rem; 
+    
+  }
+
+  .resena {
+    width: 100%;
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: wrap !important;  
+    justify-content: center; 
+  }

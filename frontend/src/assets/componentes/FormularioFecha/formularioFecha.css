@@ -1,0 +1,54 @@
+.formulario {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  
+ 
+  padding: clamp(0.3px, 1vw, 10px);
+  
+
+  
+  gap: clamp(1px, 2vw, 40px);
+}
+
+.destino,
+.inicio {
+  display: flex;
+  flex-direction: row;
+  width: clamp(5rem, 10vw, 100px);
+}
+
+.button {
+  align-self: flex-start;
+  background: #0dbcad;
+  border-radius: 10px;
+  margin: auto;
+
+ 
+  width: clamp(30px, 5vw, 60px);
+  height: clamp(30px, 5vw, 60px);
+}
+
+.buttonicon {
+  display: flex;
+
+ 
+  width: clamp(15px, 3vw, 40px);
+  height: clamp(15px, 3vw, 40px);
+}
+
+.react-datepicker-wrapper .form-control,
+.react-datepicker__input-container input.form-control {
+  background-color: transparent !important;
+  border: none !important;
+  color: white !important;
+}
+
+.form-control::placeholder {
+  font-size: clamp(10px, 1vw, 16px) !important;
+  color: white !important;
+}

@@ -1,0 +1,27 @@
+.titulo {
+    margin: auto;
+    padding: 2rem;
+    text-align: center;
+
+}
+
+.formularioeditar {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    padding:2rem;
+    gap: 2rem;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+}
+
+
+.formularioeditar input[type="text"]::placeholder,
+.formularioeditar input[type="email"]::placeholder,
+.formularioeditar textarea::placeholder {
+    color: lightgray !important;
+    font-style: italic !important;
+    opacity: 1 !important;
+}

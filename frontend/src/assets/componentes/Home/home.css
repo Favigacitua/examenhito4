@@ -1,0 +1,68 @@
+.homestyle {
+  background-image: url('/fondocrusero.png');
+  background-size: cover; 
+  background-position: center center;
+  width: 100vw;
+  height: auto; 
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+  padding-bottom: clamp(6rem, 10vh + 2rem, 38rem);
+  color: white;
+  gap: auto;
+}
+
+  .formulario-contenedor {
+    display: block !important; 
+    flex-grow: 1;
+
+}
+
+.bajadanavbar {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1400px;
+  padding-bottom:2rem;
+
+  gap: clamp(1px, 2vw, 80px); 
+  padding-left: clamp(10px, 3vw, 150px);
+  
+}
+
+.vamonos {
+  width: clamp(120px, 30vw, 600px); 
+  height: auto;
+}
+
+.bajadatitulo {
+  font-weight: bolder;
+  font-size: clamp(10px, 2.5vw, 40px);
+  margin-bottom: 0%;
+}
+
+.viajaconnosotros {
+  width: clamp(180px, 50vw, 900px);
+  height: auto;
+  display: flex;
+}
+
+
+
+@media (min-width: 770px) {
+  .navbarhome {
+    padding: 2rem !important;   
+  } 
+
+
+  .loginButton {
+    margin-left: 13rem;
+  
+  }
+
+}
+

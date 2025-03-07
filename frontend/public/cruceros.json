@@ -1,0 +1,100 @@
+{
+  "cruceros": [
+    {
+      "id": "c001",
+      "name": "Crucero por el Caribe",
+      "destinations": ["Bahamas", "Jamaica", "Cuba"],
+      "departureDate": "2025-03-01",
+      "returnDate": "2025-03-10",
+      "pricePerPerson": 1500,
+      "capacity": 200,
+      "description": "Un emocionante crucero por el Caribe con actividades a bordo y excursiones inolvidables.",
+      "features": ["Todo incluido", "Piscina infinita", "Shows nocturnos", "Actividades para niños"],
+      "image": "https://media.viajando.travel/p/321a91734225fa40d369f43026054661/adjuntos/236/imagenes/000/771/0000771616/cruceros-al-caribe.jpg",
+      "reviews": [
+        {
+          "username": "viajero1",
+          "rating": 5,
+          "comment": "¡Una experiencia inolvidable! Todo fue perfecto, desde el servicio hasta las actividades."
+        },
+        {
+          "username": "aventurera23",
+          "rating": 4,
+          "comment": "Muy buen crucero, aunque me hubiera gustado más tiempo en las excursiones."
+        }
+      ]
+    },
+    {
+      "id": "c002",
+      "name": "Crucero por el Mediterráneo",
+      "destinations": ["Italia", "Grecia", "España"],
+      "departureDate": "2025-04-15",
+      "returnDate": "2025-04-25",
+      "pricePerPerson": 1800,
+      "capacity": 250,
+      "description": "Descubre las maravillas del Mediterráneo a bordo de nuestro crucero de lujo.",
+      "features": ["Cenas gourmet", "Spa de lujo", "Excursiones guiadas", "Entretenimiento exclusivo"],
+      "image": "https://www.crucerosmediterraneo.com/descubre/wp-content/uploads/cruceros-por-el-mediterraneo-y-destinos-mas-populares-1.jpg",
+      "reviews": [
+        {
+          "username": "explorador10",
+          "rating": 5,
+          "comment": "Maravilloso viaje. La comida y las actividades culturales fueron lo mejor."
+        },
+        {
+          "username": "culturalista",
+          "rating": 3,
+          "comment": "Buena experiencia, pero el barco estaba un poco lleno."
+        }
+      ]
+    },
+    {
+      "id": "c003",
+      "name": "Crucero por el Sur de Chile",
+      "destinations": ["Valparaíso", "Puerto Montt", "Castro", "Fjordos Patagónicos"],
+      "departureDate": "2025-05-10",
+      "returnDate": "2025-05-20",
+      "pricePerPerson": 2500,
+      "capacity": 150,
+      "description": "Explora la belleza del sur de Chile, desde los colores de Valparaíso hasta los impresionantes fiordos de la Patagonia.",
+      "features": ["Guías locales", "Gastronomía chilena", "Avistamiento de fauna", "Excursiones culturales"],
+      "image": "https://www.patagoniatraveler.com/images/modulos/turismo/categorias/9/galeria/1290_Spirit-ok.webp",
+      "reviews": [
+        {
+          "username": "naturelover",
+          "rating": 5,
+          "comment": "Paisajes espectaculares y la comida típica fue un gran plus."
+        },
+        {
+          "username": "familia_viajera",
+          "rating": 4,
+          "comment": "Excelente viaje en familia, aunque las excursiones fueron un poco largas para los niños."
+        }
+      ]
+    },
+    {
+      "id": "c004",
+      "name": "Crucero por la Ruta de los Lagos",
+      "destinations": ["Puerto Montt", "Chiloé (Castro)", "Puerto Natales", "Torres del Paine"],
+      "departureDate": "2025-06-01",
+      "returnDate": "2025-06-12",
+      "pricePerPerson": 3200,
+      "capacity": 100,
+      "description": "Un viaje exclusivo por la ruta de los lagos del sur de Chile, ideal para los amantes de la naturaleza y la cultura.",
+      "features": ["Tours personalizados", "Catas de vinos chilenos", "Fotografía profesional", "Alojamientos de lujo"],
+      "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/50/3a/ec/caption.jpg?w=500&h=400&s=1",
+      "reviews": [
+        {
+          "username": "fotografo99",
+          "rating": 5,
+          "comment": "Los paisajes son de otro mundo, perfecto para amantes de la fotografía."
+        },
+        {
+          "username": "aventurero_cl",
+          "rating": 4,
+          "comment": "Un viaje muy completo, aunque un poco caro."
+        }
+      ]
+    }
+  ]
+}

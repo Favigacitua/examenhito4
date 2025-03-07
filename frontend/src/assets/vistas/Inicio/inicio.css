@@ -1,0 +1,21 @@
+.loquenosdiferencia img,
+.protocoloseguridad img,
+.descargalaapp img,
+.ofertasalcorreo img {
+    width: 100%;
+    margin: auto;
+}
+
+.destinos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.banners {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}

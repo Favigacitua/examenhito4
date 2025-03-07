@@ -1,0 +1,7 @@
+.resgisterform input[type="email"]::placeholder,
+.registerform input[type="password"]::placeholder
+{
+    color: lightgray !important;
+    font-style: italic !important;
+    opacity: 1 !important;
+}

@@ -1,0 +1,82 @@
+.navbar-custom {
+  background-color: #D9D9D9;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+  color: #FFFFFF;
+  transition: color 0.3s ease;
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .nav-link:hover {
+  color: #0DBCAD;
+}
+
+.navbar-toggler {
+  border-color: #0DBCAD;
+}
+
+.navbar-toggler-icon {
+  filter: invert(52%) sepia(78%) saturate(324%) hue-rotate(120deg);
+}
+
+.loginButton {
+  z-index: 10;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 10rem;
+  height: 2.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  
+  
+}
+
+.navbar .nav-link {
+  color: #FFFFFF;
+  transition: color 0.3s ease;
+  font-weight: normal;
+}
+.navbar-custom .navbar-nav .nav-link.active {
+  color: #0DBCAD !important;
+}
+
+.navbar-custom .navbar-brand.active-link {
+  color: #0DBCAD !important;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active-link {
+  color: #0DBCAD !important;
+}
+
+
+
+
+
+@media (max-width: 1199px) {
+  .navbar-custom {
+    padding: 0.5rem 1rem;
+  }
+  .loginButton {
+    margin-left: 0.1rem;
+    margin-top: auto;
+   
+    
+  }
+}
+
+@media (min-width:1200px) {
+  .navbar-custom .nav-link {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .loginButton {
+    margin-left: 13rem;
+    
+  }
+}
+
