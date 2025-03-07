@@ -1,8 +1,338 @@
-Hito 2
+Acá esta el schema completo recordar que parte con 
+export const request = {
+  payload:
+y despues en la respuesta va
+  export const response =[
 
-- Se hace entrega del hito 2, se uso un archivo de cruceros.json para mostrar las card y que se viera como funcionaria el renderizado dinamico, pero eso se reemplazara por el backend para el hito 3
-- Existen dos context, el primero que se llama context, se usa para cargar todo lo relacionado con los viajes, el UserContext ve toda la parte de usuario, login, register, subir publicaciones, añadir a favoritos y editar perfil, el detalle es que eso esta como ruta privada por lo que no se vera en el deploy, y no hicimos simulacion con un json, quedo listo para conectar al backend
-- El apartado de contacto se vera en el hito 3, ya que consultamos al tutor y nos indico que era para el hito 3, pero se hara con nodemailer para que la informacion llegue a un email.
-- Hay algunas pequeñas diferencias con el diseño presentado en el hito 1, debido a que descartamos algunos detalles que no sumaban y solo nos iban a significar contratiempos, pero a grandes rasgos se mantiene el diseño original salvo algunas variables
-- Existe una ruta que se llama OnGoing, que esta diseñada para todos los link activos pero que no tienen un destino desarrollado por que no se pedian dentro del desafio, son todas rutas del footer
-- El link de vercel es el siguiente https://examenhito2.vercel.app 
+
+export const request = {
+  payload: {
+    login: {
+      request: {
+        type: "object",
+        properties: {
+          email: {
+            type: "string",
+            format: "email"
+          },
+          password: {
+            type: "string"
+          }
+        },
+        required: ["email", "password"]
+      },
+      response: {
+        type: "object",
+        properties: {
+          token: {
+            type: "string"
+          },
+          user: {
+            type: "object",
+            properties: {
+              id: {
+                type: "string"
+              },
+              nombre: {
+                type: "string"
+              },
+              email: {
+                type: "string",
+                format: "email"
+              }
+            },
+            required: ["id", "nombre", "email"]
+          }
+        },
+        required: ["token", "user"]
+      }
+    },
+    register: {
+      request: {
+        type: "object",
+        properties: {
+          email: {
+            type: "string",
+            format: "email"
+          },
+          nombre: {
+            type: "string"
+          },
+          apellido: {
+            type: "string"
+          },
+          password: {
+            type: "string"
+          },
+          repetir_password: {
+            type: "string"
+          }
+        },
+        required: ["email", "nombre", "apellido", "password", "repetir_password"]
+      },
+      response: {
+        type: "object",
+        properties: {
+          token: {
+            type: "string"
+          },
+          user: {
+            type: "object",
+            properties: {
+              id: {
+                type: "string"
+              },
+              nombre: {
+                type: "string"
+              },
+              apellido: {
+                type: "string"
+              },
+              email: {
+                type: "string",
+                format: "email"
+              }
+            },
+            required: ["id", "nombre", "apellido", "email"]
+          }
+        },
+        required: ["token", "user"]
+      }
+    },
+    viajes: {
+      get: {
+        response: {
+          type: "object",
+          properties: {
+            viajes: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  id: {
+                    type: "number"
+                  },
+                  destino: {
+                    type: "string"
+                  },
+                  descripcion: {
+                    type: "string"
+                  },
+                  precio: {
+                    type: "number"
+                  },
+                  imagen: {
+                    type: "string",
+                    description: "URL de la imagen del viaje"
+                  }
+                },
+                required: ["id", "destino", "descripcion", "precio", "imagen"]
+              }
+            }
+          },
+          required: ["viajes"]
+        }
+      },
+      detalle: {
+        get: {
+          response: {
+            type: "object",
+            properties: {
+              id: {
+                type: "number"
+              },
+              destino: {
+                type: "string"
+              },
+              descripcion: {
+                type: "string"
+              },
+              precio: {
+                type: "number"
+              },
+              imagen: {
+                type: "string",
+                description: "URL de la imagen del viaje"
+              }
+            },
+            required: ["id", "destino", "descripcion", "precio", "imagen"]
+          }
+        }
+      }
+    },
+    favoritos: {
+      post: {
+        request: {
+          type: "object",
+          properties: {
+            userId: {
+              type: "string"
+            },
+            productId: {
+              type: "string"
+            }
+          },
+          required: ["userId", "productId"]
+        },
+        response: {
+          type: "object",
+          properties: {
+            message: {
+              type: "string"
+            }
+          },
+          required: ["message"]
+        }
+      },
+      delete: {
+        request: {
+          type: "object",
+          properties: {
+            userId: {
+              type: "string"
+            },
+            productId: {
+              type: "string"
+            }
+          },
+          required: ["userId", "productId"]
+        },
+        response: {
+          type: "object",
+          properties: {
+            message: {
+              type: "string"
+            }
+          },
+          required: ["message"]
+        }
+      }
+    },
+    reseñas: {
+      get: {
+        response: {
+          type: "object",
+          properties: {
+            reseñas: {
+              type: "array",
+              items: {
+                type: "object",
+                properties: {
+                  usuario_id: {
+                    type: "integer"
+                  },
+                  nombre: {
+                    type: "string"
+                  },
+                  apellido: {
+                    type: "string"
+                  },
+                  destino: {
+                    type: "string"
+                  },
+                  valoracion: {
+                    type: "number"
+                  },
+                  descripcion: {
+                    type: "string"
+                  }
+                },
+                required: [
+                  "usuario_id",
+                  "nombre",
+                  "apellido",
+                  "destino",
+                  "valoracion",
+                  "descripcion"
+                ]
+              }
+            }
+          },
+          required: ["reseñas"]
+        }
+      },
+      delete: {
+        request: {
+          type: "object",
+          properties: {
+            userId: {
+              type: "string"
+            },
+            reviewId: {
+              type: "string"
+            }
+          },
+          required: ["userId", "reviewId"]
+        },
+        response: {
+          type: "object",
+          properties: {
+            message: {
+              type: "string"
+            }
+          },
+          required: ["message"]
+        }
+      }
+    },
+    usuario: {
+      put: {
+        request: {
+          type: "object",
+          properties: {
+            nombre: {
+              type: "string"
+            },
+            apellido: {
+              type: "string"
+            },
+            email: {
+              type: "string",
+              format: "email"
+            },
+            password: {
+              type: "string"
+            },
+            imagen: {
+              type: "string",
+              description: "URL de la imagen del usuario"
+            }
+          },
+          required: ["nombre", "apellido", "email", "password", "imagen"]
+        },
+        response: {
+          type: "object",
+          properties: {
+            message: {
+              type: "string"
+            },
+            user: {
+              type: "object",
+              properties: {
+                id: {
+                  type: "string"
+                },
+                nombre: {
+                  type: "string"
+                },
+                apellido: {
+                  type: "string"
+                },
+                email: {
+                  type: "string",
+                  format: "email"
+                },
+                imagen: {
+                  type: "string",
+                  description: "URL de la imagen del usuario"
+                }
+              },
+              required: ["id", "nombre", "apellido", "email", "imagen"]
+            }
+          },
+          required: ["message", "user"]
+        }
+      }
+    }
+  }
+};
