@@ -22,18 +22,12 @@ async function getViajes() {
     
     const { rows } = await pool.query(consulta);
 
-    const viajesCorregidos = rows.map(viaje => ({
-        ...viaje,
-        descripcion: Buffer.from(viaje.descripcion, 'binary').toString('utf8')
-    }));
-
-
-        console.log("📌 Viajes obtenidos desde la base de datos:",  viajesCorregidos);
-        return  viajesCorregidos;
-      } catch (error) {
-        console.error(" Error al obtener viajes:", error);
-        throw new Error("Error interno del servidor");
-      }
+    console.log("📌 Viajes obtenidos desde la base de datos:", rows);
+    return rows;
+} catch (error) {
+    console.error("❌ Error al obtener viajes:", error);
+    throw new Error("Error interno del servidor");
+}
 }
 
 
@@ -53,17 +47,12 @@ async function getViajeId(id) {
             FROM viajes
             WHERE id = $1
         `;
+
         const { rows } = await pool.query(consulta, [id]);
 
         if (!rows[0]) return null;
 
-        
-        const viaje = {
-            ...rows[0],
-            descripcion: Buffer.from(rows[0].descripcion, 'binary').toString('utf8')
-        };
-
-        return viaje;
+        return rows[0];
     } catch (error) {
         console.error("❌ Error en getViajeId:", error.message);
         throw new Error("Error interno del servidor");
@@ -96,15 +85,8 @@ async function getMisViajes(authHeader) {
         WHERE mv.id_usuario = $1
     `;
 
-    const { rows: viajesRows } = await pool.query(consultaViajes, [usuarioId]);
-
-    
-    const viajesCorregidos = viajesRows.map(viaje => ({
-        ...viaje,
-        descripcion: Buffer.from(viaje.descripcion, 'binary').toString('utf8')
-    }));
-
-    return viajesCorregidos;
+   const { rows: viajesRows } = await pool.query(consultaViajes, [usuarioId]);
+    return viajesRows;
 }
 
 

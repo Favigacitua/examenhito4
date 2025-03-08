@@ -3,8 +3,6 @@ import pool from "../config/dbConnection.js"
 
 async function getResenas() {
     try {
-
-
         const consulta = `
             SELECT r.id, r.valoracion, r.descripcion, r.id_viaje, u.nombre, u.apellido
             FROM resenas r
@@ -12,11 +10,7 @@ async function getResenas() {
         `;
         const { rows } = await pool.query(consulta);
 
-        return rows.map(resena => ({
-            ...resena,
-            descripcion: Buffer.from(resena.descripcion, 'binary').toString('utf8')
-        }));
-
+        return rows; 
     } catch (error) {
         console.error("❌ Error al obtener reseñas:", error);
         throw new Error("Error interno del servidor");
@@ -25,7 +19,6 @@ async function getResenas() {
 
 async function getResenasPorViaje(id_viaje) {
     try {
-
         console.log("📌 Buscando reseñas para el viaje ID:", id_viaje)
 
         const consulta = `
@@ -39,15 +32,8 @@ async function getResenasPorViaje(id_viaje) {
         const values = [id_viaje];
         const { rows } = await pool.query(consulta, values);
 
-        const resenasCorregidas = rows.map(resena => ({
-            ...resena,
-            descripcion: Buffer.from(resena.descripcion, 'binary').toString('utf8')
-        }));
-
-        console.log("📌 Resultado obtenido (corregido):", reseñasCorregidas);
-        return resenasCorregidas;
-
-        return rows;
+        console.log("📌 Resultado obtenido:", rows);
+        return rows; 
     } catch (error) {
         console.error("❌ Error al obtener reseñas por viaje:", error);
         throw new Error("Error interno del servidor");
@@ -82,14 +68,13 @@ async function postResenas(id_usuario, id_viaje, valoracion, descripcion) {
             id_usuario,
             id_viaje,
             valoracion,
-            Buffer.from(descripcion, 'utf8').toString() 
+            descripcion // No usar Buffer.from()
         ];
-
 
         const { rows } = await pool.query(consulta, values);
         return rows[0];
     } catch (error) {
-        console.error(" Error al agregar reseña:", error);
+        console.error("❌ Error al agregar reseña:", error);
         throw new Error("Error interno del servidor");
     }
 }
