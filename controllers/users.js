@@ -34,7 +34,7 @@ const getUserByIdController = async (req, res) => {
     }
 
     if (user.imagen) {
-      user.imagen = `http://localhost:3000/uploads/${user.imagen}`;
+      user.imagen = `https://examenhito4.onrender.com/uploads/${user.imagen}`;
     }
 
     res.status(200).json(user);

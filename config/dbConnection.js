@@ -22,4 +22,13 @@ const pool = new Pool({
     
 })
 
+(async () => {
+    try {
+        const res = await pool.query('SHOW SERVER_ENCODING;');
+        console.log(`✅ Codificación de la base de datos: ${res.rows[0].server_encoding}`);
+    } catch (error) {
+        console.error('❌ Error al verificar codificación:', error);
+    }
+})();
+
 export default pool;

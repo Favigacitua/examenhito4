@@ -11,7 +11,12 @@ async function getResenas() {
             JOIN usuario u ON r.id_usuario = u.id
         `;
         const { rows } = await pool.query(consulta);
-        return rows;
+
+        return rows.map(resena => ({
+            ...resena,
+            descripcion: Buffer.from(resena.descripcion, 'binary').toString('utf8')
+        }));
+
     } catch (error) {
         console.error("❌ Error al obtener reseñas:", error);
         throw new Error("Error interno del servidor");
@@ -34,7 +39,13 @@ async function getResenasPorViaje(id_viaje) {
         const values = [id_viaje];
         const { rows } = await pool.query(consulta, values);
 
-        console.log("📌 Resultado obtenido:", rows); 
+        const resenasCorregidas = rows.map(resena => ({
+            ...resena,
+            descripcion: Buffer.from(resena.descripcion, 'binary').toString('utf8')
+        }));
+
+        console.log("📌 Resultado obtenido (corregido):", reseñasCorregidas);
+        return resenasCorregidas;
 
         return rows;
     } catch (error) {
@@ -66,7 +77,16 @@ async function postResenas(id_usuario, id_viaje, valoracion, descripcion) {
             VALUES ($1, $2, $3, $4)
             RETURNING *
         `;
-        const { rows } = await pool.query(consulta, [id_usuario, id_viaje, valoracion, descripcion]);
+
+        const values = [
+            id_usuario,
+            id_viaje,
+            valoracion,
+            Buffer.from(descripcion, 'utf8').toString() 
+        ];
+
+
+        const { rows } = await pool.query(consulta, values);
         return rows[0];
     } catch (error) {
         console.error(" Error al agregar reseña:", error);

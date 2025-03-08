@@ -6,7 +6,14 @@ async function getUsers() {
   try {
     const consulta = "SELECT id, nombre, apellido, email FROM usuario";
     const { rows } = await pool.query(consulta);
-    return rows;
+   
+    return rows.map(user => ({
+      ...user,
+      nombre: Buffer.from(user.nombre, 'binary').toString('utf8'),
+      apellido: Buffer.from(user.apellido, 'binary').toString('utf8')
+  }));
+
+
   } catch (error) {
     console.error(" Error en getUsers:", error.message);
     throw error;
@@ -23,7 +30,14 @@ async function getUserById(id) {
       return null; 
     }
 
-    return rows[0];
+    
+    const user = rows[0];
+    user.nombre = Buffer.from(user.nombre, 'binary').toString('utf8');
+    user.apellido = Buffer.from(user.apellido, 'binary').toString('utf8');
+
+    return user;
+
+
   } catch (error) {
     console.error(" Error en getUserById:", error.message);
     throw error;
@@ -41,6 +55,9 @@ async function userLogin(email, password) {
   }
 
   const user = result.rows[0];
+
+  user.nombre = Buffer.from(user.nombre, 'binary').toString('utf8');
+  user.apellido = Buffer.from(user.apellido, 'binary').toString('utf8');
 
   
   console.log(" Contraseña ingresada:", password);
@@ -70,7 +87,12 @@ async function postUsers(nombre, apellido, email, password) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const consulta = 'INSERT INTO usuario (nombre, apellido, email, password) VALUES ($1, $2, $3, $4) RETURNING id, nombre, apellido, email';
-    const values = [nombre, apellido, email, hashedPassword];
+    const values = [
+      Buffer.from(nombre, 'utf8').toString(), 
+      Buffer.from(apellido, 'utf8').toString(), 
+      email,
+      hashedPassword
+  ];
 
     const { rows } = await pool.query(consulta, values);
     
